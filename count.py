@@ -1,6 +1,4 @@
-count = 0
-while True:
-	print(bin(count), count)
-	if count < 100: count = count + 1
-	else: break
-print("Happy", count, "th Birthday!")
+for count in range(0, 101):
+        print(bin(count), count)
+        if count > 100: break
+print("Happy", count, "th Birthday!")  
