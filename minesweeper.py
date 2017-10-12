@@ -17,8 +17,7 @@ def m_mine_repeat():
 	else:
 		mines.append([mine_row,mine_col])
 def m_add_mines():
-	errorr=bool(True)
-	while errorr==bool(True):
+	while True:
 		try:
 			mine_number=int(input("Number of Mines: "))
 			if mine_number>board_row*board_col:
@@ -26,7 +25,7 @@ def m_add_mines():
 		except:
 			print("That's not a valid number.")
 		else:
-			errorr=bool(False)
+			break
 	for mine in range (0,mine_number):
 		mine_row=m_random_row(board)
 		mine_col=m_random_col(board)
@@ -60,8 +59,7 @@ def m_check_mines_rec(x,y):
 				m_check_mines(x+r1,y+c1)
 def m_play_game():
 	m_print_board(board)
-	errorr=bool(True)
-	while errorr==bool(True):
+	while True:
 		try:
 			guess_row=int(input("Guess Row: "))-1
 			guess_col=int(input("Guess Column: "))-1
@@ -71,11 +69,11 @@ def m_play_game():
 			print("That's not a valid number.")
 		else:
 			m_check_mines(guess_row,guess_col)
-			errorr=bool(False)
 			if [guess_row,guess_col] in mines:
 				print ("BOOM! Game Over")
 				not_dead=bool(False)
 				m_game_end()
+			break
 def m_game_end():
 	replay=input("Would you like to play again? ")
 	if replay=="yes" or replay=="y" or replay=="ja" or replay=="si":
@@ -96,22 +94,20 @@ def minesweeper():
 	global mines
 	global not_dead
 	not_dead=bool(True)
-	errorr=bool(True)
-	while errorr==True:
+	while True:
 		try:
 			board_row=int(input("Rows on Board: "))
 		except:
 			print("Not a valid number.")
 		else:
-			errorr=bool(False)
-	errorr=bool(True)
-	while errorr==True:
+			break
+	while True:
 		try:
 			board_col=int(input("Columns on Board: "))
 		except:
 			print("Not a valid number.")
 		else:
-			errorr=bool(False)
+			break
 	board=[]
 	mines=[]
 	m_create_board()
