@@ -1031,11 +1031,6 @@ def damian():
 	turtle.left(60)
 
 
-
-	input("Press enter to end")
-
-	win.close()
-
 	#cut off point
 def shaeden():
 
