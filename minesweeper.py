@@ -7,8 +7,10 @@ def m_create_board():
 	for x in range(0,board_col):
 		board.append(['O']*board_row)
 def m_print_board(board):
-	for row in board:
-		print (row)
+	for row in range(len(board)):
+		for col in board[row]:
+			print(col, end="")
+		print(end="\n")
 def m_mine_repeat():
 	mine_row=m_random_row(board)
 	mine_col=m_random_col(board)
