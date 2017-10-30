@@ -88,4 +88,8 @@ def start_up():
 	sleep(0.5)
 	return
 while __name__=="__main__":
-	start_up()
+	try:
+		start_up()
+	except:
+		print('\n\033[1;91;40mThe Only Winning Move is Not to Play\033[0;97;40m')
+		exit()
