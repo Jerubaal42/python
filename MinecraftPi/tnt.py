@@ -10,7 +10,7 @@ def init():
 
 def tnt(mc,x,y,z):
 	for each in range(30):
-		for other in range(2):
+		for other in range(1):
 			mc.setBlock(x,y,z,46)
 			sleep(0.1)
 			mc.setBlock(x,y,z,80)
