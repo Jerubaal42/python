@@ -66,6 +66,7 @@ def playgame(board,playersym):
 			if winchecker(board,player)!=None:
 				return(winchecker(board,player))
 def start_up():
+	global owin,xwin,nwin
 	global board
 	global winner
 	winner=''
@@ -79,14 +80,29 @@ def start_up():
 	printboard(board)
 	if winner=='o':
 		print("\033[1;92;40m{0} wins!".format(winner))
+		owin=owin+1
 	elif winner=='x':
 		print("\033[1;91;40m{0} wins!".format(winner))
+		xwin=xwin+1
 	else:
 		print("\033[1;97;40m{0} wins!".format(winner))
+		nwin=nwin+1
+	sleep(0.1)
+	print("")
+	sleep(0.1)
+	print("\033[1;92;40m{0} \033[1;97;40m| \033[1;91;40m{1} \033[1;97;40m| {2}".format(owin,xwin,nwin))
 	sleep(0.1)
 	print("\033[0;97;40m")
 	sleep(0.5)
+	print("")
+	sleep(0.1)
 	return
+if __name__=="__main__":
+	global owin,xwin,nwin
+	owin=0
+	xwin=0
+	nwin=0
+
 while __name__=="__main__":
 	try:
 		start_up()
