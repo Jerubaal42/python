@@ -46,6 +46,7 @@ def checkBlock(mc,score):
 def main():
 	global meloncount
 	mc=init()
+	mc.postToChat("Welcome to Melon Grabber Minigame!")
 	mc.setting("world_immutable",True)
 	score={}
 	meloncount=0
