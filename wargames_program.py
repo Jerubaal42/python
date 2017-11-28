@@ -121,6 +121,8 @@ if __name__=="__main__":
 while __name__=="__main__":
 	try:
 		start_up()
+		if nwin>50:
+			raise ValueError
 	except:
 		sleep(0.1)
 		print('\n \033[1;91;40m',end="")
