@@ -1,11 +1,25 @@
 from random import randint
 from time import sleep
+import sys
+
+class Unbuffered(object):
+   def __init__(self, stream):
+       self.stream = stream
+   def write(self, data):
+       self.stream.write(data)
+       self.stream.flush()
+   def writelines(self, datas):
+       self.stream.writelines(datas)
+       self.stream.flush()
+   def __getattr__(self, attr):
+       return getattr(self.stream, attr)
+
 def printboard(board):
 	for row in range(len(board)):
 		for col in board[row]:
-			if col=='|o|':
+			if col=='|O|':
 				print("\033[1;92;40m",col, end="")
-			elif col=="|x|":
+			elif col=="|X|":
 				print("\033[1;91;40m",col,end="")
 			else:
 				print("\033[1;97;40m",col,end="")
@@ -50,7 +64,7 @@ def winchecker(board,player):
 		else:
 			losegame.append('lose')
 	if len(losegame)==len(board) and winner=='':
-		return('Nobody')
+		return('NONE')
 def playgame(board,playersym):
 	while True:
 		for player in playersym:
@@ -71,33 +85,34 @@ def start_up():
 	global winner
 	winner=''
 	board=[]
-	playersym=['o','x']
+	playersym=['O','X']
 	players=2
 	boardsize=3
 	for x in range(0,boardsize):
 		board.append(['| |']*boardsize)
 	winner=playgame(board,playersym)
 	printboard(board)
-	if winner=='o':
-		print("\033[1;92;40m{0} wins!".format(winner))
+	if winner=='O':
+		print(" \033[1;92;40mWINNER: {0}\033[0;97;40m".format(winner))
 		owin=owin+1
-	elif winner=='x':
-		print("\033[1;91;40m{0} wins!".format(winner))
+	elif winner=='X':
+		print(" \033[1;91;40mWINNER: {0}\033[0;97;40m".format(winner))
 		xwin=xwin+1
 	else:
-		print("\033[1;97;40m{0} wins!".format(winner))
+		print(" \033[1;97;40mWINNER: {0}\033[0;97;40m".format(winner))
 		nwin=nwin+1
 	sleep(0.1)
 	print("")
 	sleep(0.1)
-	print("\033[1;92;40m{0} \033[1;97;40m| \033[1;91;40m{1} \033[1;97;40m| {2}".format(owin,xwin,nwin))
+	print(" \033[1;92;40m{0} \033[1;97;40m| \033[1;91;40m{1} \033[1;97;40m| {2}\033[0;97;40m".format(owin,xwin,nwin))
 	sleep(0.1)
-	print("\033[0;97;40m")
+	print("")
 	sleep(0.5)
 	print("")
 	sleep(0.1)
 	return
 if __name__=="__main__":
+	sys.stdout= Unbuffered(sys.stdout)
 	global owin,xwin,nwin
 	owin=0
 	xwin=0
@@ -107,5 +122,17 @@ while __name__=="__main__":
 	try:
 		start_up()
 	except:
-		print('\n\033[1;91;40mThe Only Winning Move is Not to Play\033[0;97;40m')
+		sleep(0.1)
+		print('\n \033[1;91;40m',end="")
+		for each in "War is a Strange Game":
+			print(each,end="")
+			sleep(0.075)
+		print('\033[0;97;40m\n')
+		sleep(1)
+		print(' \033[1;91;40m',end="")
+		for each in "The Only Winning Move is Not to Play":
+			print(each,end="")
+			sleep(0.075)
+		print('\033[0;97;40m\n')
+		sleep(1)
 		exit()
