@@ -50,7 +50,7 @@ def printboard(board):
 				stdscr.addstr(((curses.LINES//2)-5)+(row*6),((curses.COLS//2)-8)+(col*6),"\\---/")
 			elif cols[col]=="|X|":
 				stdscr.addstr(((curses.LINES//2)-9)+(row*6),((curses.COLS//2)-8)+(col*6),"\\   /")
-				stdscr.addstr(((curses.LINES//2)-8)+(row*6),((curses.COLS//2)-8)+(col*6)," \\ /  ")
+				stdscr.addstr(((curses.LINES//2)-8)+(row*6),((curses.COLS//2)-8)+(col*6)," \\ / ")
 				stdscr.addstr(((curses.LINES//2)-7)+(row*6),((curses.COLS//2)-8)+(col*6),"  X  ")
 				stdscr.addstr(((curses.LINES//2)-6)+(row*6),((curses.COLS//2)-8)+(col*6)," / \\ ")
 				stdscr.addstr(((curses.LINES//2)-5)+(row*6),((curses.COLS//2)-8)+(col*6),"/   \\")
@@ -130,13 +130,13 @@ def start_up():
 	printboard(board)
 	if winner=='O':
 		stdscr.addstr((curses.LINES//2)-2,(curses.COLS//2)-7,"/-------------\\")
-		stdscr.addstr((curses.LINES//2)-1,(curses.COLS//2)-7,"| WINNER: {0}   |".format(winner))
+		stdscr.addstr((curses.LINES//2)-1,(curses.COLS//2)-7,"|  WINNER: {0}  |".format(winner))
 		stdscr.addstr((curses.LINES//2),(curses.COLS//2)-7,"\\-------------/")
 		owin=owin+1
 		stdscr.refresh()
 	elif winner=='X':
 		stdscr.addstr((curses.LINES//2)-2,(curses.COLS//2)-7,"/-------------\\")
-		stdscr.addstr((curses.LINES//2)-1,(curses.COLS//2)-7,"| WINNER: {0}   |".format(winner))
+		stdscr.addstr((curses.LINES//2)-1,(curses.COLS//2)-7,"|  WINNER: {0}  |".format(winner))
 		stdscr.addstr((curses.LINES//2),(curses.COLS//2)-7,"\\-------------/")
 		xwin=xwin+1
 		stdscr.refresh()
@@ -162,8 +162,6 @@ if __name__=="__main__":
 while __name__=="__main__":
 	try:
 		start_up()
-		if nwin>50:
-			raise ValueError
 	except KeyboardInterrupt or ValueError:
 		sleep(0.1)
 		stdscr.clear()
@@ -182,6 +180,7 @@ while __name__=="__main__":
 		curses.nocbreak()
 		curses.echo()
 		curses.endwin()
+		exit()
 	except:
 		sleep(0.1)
 		stdscr.clear()
@@ -192,5 +191,4 @@ while __name__=="__main__":
 		curses.echo()
 		curses.endwin()
 		raise
-	finally:
 		exit()
