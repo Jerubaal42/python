@@ -23,8 +23,8 @@ def diceroll():
 			print("Your bet of",bet_data[0],"is still running.")
 	print(bet_dict)
 	print(temp_list)
-	for i in range(len(temp_list)):
-		if temp_list[i] in bet_dict:
+	for i in temp_list:
+		if i in bet_dict:
 			del bet_dict[i]
 def bet(money):
 	for i in range(26):
@@ -35,6 +35,7 @@ def bet(money):
 			global cash
 			cash=cash-money
 			break
+	diceroll()
 
 if __name__=="__main__":
 	global cash
