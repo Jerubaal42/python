@@ -1,0 +1,66 @@
+Concepts for Game:
+You are a clanlord of a small clan, maintaining a holding similar to King of Dragon Pass
+
+Three seasons: Growth Harvest Dark
+
+	Growth season:
+		Plant most crops, new year celebration, and animal births
+		
+	Harvest season:
+		Harvest most crops, animal youth mature, plant some crops
+		
+	Dark season:
+		Reduced food decay, but no plantable and few harvestable crops
+	
+Food
+	~20% of your food decays each month, before the harvest
+		~15% during Dark season
+	Each "person" eats 1 food unit each month, regardless of whether they work or not
+	Any additional food needed is taken from your animals
+	Most animals produce a small amount of food each month
+	There are five kinds of food: Meat Milk Grain Fruit Vegetable
+		Meat is produced when an animal is butchered, and periodically from Chickens and Ducks
+			Chickens produce 1 Meat every month per 5 Chickens
+			Chickens are butchered for 3 Meat
+			Ducks produce 1 Meat every month per 5 Ducks
+			Ducks are butchered for 3 Meat
+			Sheep are butchered for 10 Meat
+			Goats are butchered for 10 Meat
+			Cattle are butchered for 15 Meat
+		Milk is produced periodically from Sheep, Goats, and Cattle during Growth
+			Sheep produce 1 Milk every Growth month
+			Goats produce 1 Milk every Growth month
+			Cattle produce 1 Milk every Growth month
+		Grain, Fruit and Vegetables are harvested as crops
+			Grain is primarily planted in Growth and harvested in Harvest
+				Barley is planted mid-Growth and harvested early Harvest
+				Oats are planted late Growth and harvested early Harvest
+				Rice is planted late Growth and harvested mid-Harvest
+				Rye is planted late Harvest and harvested late Growth
+				Sorghum is planted late Growth and harvested late Harvest
+				Spring Wheat is planted mid-Growth and harvested early Harvest
+				Winter Wheat is planted late Harvest and harvested late Growth
+			Fruit is planted in any season and is primarily harvested in Growth
+			Vegetables are planted and harvested in most any season
+				Artichoke is planted 3 Growth and harvested 2-3 Harvest
+				Lettuce is planted 2-4 Growth and 1-2 Harvest and harvested 3-4 Growth and 1-4 Harvest
+				Beets are planted 4 Dark 1 Growth and harvested 2-4 Growth
+				Broccoli is planted 1 Growth and 1-2 Harvest and harvested 3-4 Growth and 4 Harvest
+				Cauliflower is planted 1-3 Growth 1-2 Harvest and harvested 2-4 Harvest 1 Dark
+				Cabbage is planted 3-4 Growth and harvested 3-4 Harvest
+				Kale is planted 1 Harvest and harvested 3-4 Harvest 1-2 Dark
+				Brussel Sprouts are planted 3-4 Growth and harvested 3-4 Harvest
+				Carrots are planted 3-4 Growth 1 Harvest and harvested 2-4 Harvest and 1-2 Dark
+				Cucumbers are planted 3-4 Growth and harvested 2-3 Harvest
+				Eggplants
+				Leeks are planted 1 Growth and harvested 1-3 Harvest
+				Okra
+				Onions are planted 1-2 Growth and harvested 1-2 Harvest
+				Scallions are planted 2-4 Growth 1 Harvest and harvested 4 Growth 1-3 Harvest
+				Shallots are planted 1-2 Growth and harvested 1-2 Harvest
+				Parsnips are planted 2 Growth and harvested 4 Harvest 1-2 Dark
+				Peas are planted 1 Growth and 2 Harvest and harvested 3 Growth and 4 Harvest
+				Radishes are planted 2-4 Growth 1-3 Harvest and harvested 3-4 Growth 1-4 Harvest
+				Spinach is planted 3-4 Dark 1-4 Growth and 1-2 Harvest and harvested 2-4 Growth 1-4 Harvest and 1 Dark
+				Turnips are planted 1-3 Growth and harvested 1-4 Harvest
+				
