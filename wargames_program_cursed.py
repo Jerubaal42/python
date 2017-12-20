@@ -3,6 +3,8 @@ from time import sleep
 import curses
 import sys
 
+#War Operation Plan Response
+
 class Unbuffered(object):
    def __init__(self, stream):
        self.stream = stream
@@ -18,6 +20,7 @@ class Unbuffered(object):
 def printboard(board):
 	global stdscr
 	global owin,xwin,nwin
+	global sleepcounter
 	stdscr.clear()
 	stdscr.addstr((curses.LINES//2)-9,(curses.COLS//2)-3,"|     |")
 	stdscr.addstr((curses.LINES//2)-8,(curses.COLS//2)-3,"|     |")
@@ -61,7 +64,8 @@ def printboard(board):
 				stdscr.addstr(((curses.LINES//2)-6)+(row*6),((curses.COLS//2)-8)+(col*6),"     ")
 				stdscr.addstr(((curses.LINES//2)-5)+(row*6),((curses.COLS//2)-8)+(col*6),"     ")
 	stdscr.refresh()
-	sleep(0.25)
+	if (sleepcounter/4)>0:
+		sleep(sleepcounter/4)
 def winchecker(board,player):
 	global winner
 	losegame=[]
@@ -119,6 +123,7 @@ def start_up():
 	global board
 	global winner
 	global stdscr
+	global sleepcounter
 	winner=''
 	board=[]
 	playersym=['O','X']
@@ -130,13 +135,13 @@ def start_up():
 	printboard(board)
 	if winner=='O':
 		stdscr.addstr((curses.LINES//2)-2,(curses.COLS//2)-7,"/-------------\\")
-		stdscr.addstr((curses.LINES//2)-1,(curses.COLS//2)-7,"|  WINNER: {0}  |".format(winner))
+		stdscr.addstr((curses.LINES//2)-1,(curses.COLS//2)-7,"| WINNER:  {0}  |".format(winner))
 		stdscr.addstr((curses.LINES//2),(curses.COLS//2)-7,"\\-------------/")
 		owin=owin+1
 		stdscr.refresh()
 	elif winner=='X':
 		stdscr.addstr((curses.LINES//2)-2,(curses.COLS//2)-7,"/-------------\\")
-		stdscr.addstr((curses.LINES//2)-1,(curses.COLS//2)-7,"|  WINNER: {0}  |".format(winner))
+		stdscr.addstr((curses.LINES//2)-1,(curses.COLS//2)-7,"| WINNER:  {0}  |".format(winner))
 		stdscr.addstr((curses.LINES//2),(curses.COLS//2)-7,"\\-------------/")
 		xwin=xwin+1
 		stdscr.refresh()
@@ -146,37 +151,163 @@ def start_up():
 		stdscr.addstr((curses.LINES//2),(curses.COLS//2)-7,"\\-------------/")
 		nwin=nwin+1
 		stdscr.refresh()
-	sleep(1)
+	sleep(0.009)
+	if sleepcounter>0:
+		sleep(sleepcounter*2)
+		sleepcounter=sleepcounter*0.9
 	return
 if __name__=="__main__":
 	sys.stdout= Unbuffered(sys.stdout)
 	global stdscr
 	global owin,xwin,nwin
+	global sleepcounter
+	sleepcounter=float(2)
 	stdscr=curses.initscr()
 	curses.noecho()
 	curses.cbreak()
 	owin=0
 	xwin=0
 	nwin=0
+	screenstart=0
+	stdscr.clear()
+	stdscr.move(screenstart,0)
+	for each in "GREETINGS PROFESSOR FALKEN.":
+		stdscr.addstr(each)
+		stdscr.refresh()
+		sleep(0.05)
+	stdscr.move(screenstart+2,0)
+	curses.echo()
+	curses.nocbreak()
+	stdscr.refresh()
+	testinput=input()
+	for each in testinput:
+		stdscr.addstr(each)
+		stdscr.refresh()
+		sleep(0.05)
+	sleep(1)
+	curses.noecho()
+	curses.cbreak()
+	stdscr.move(screenstart+4,0)
+	for each in "HOW ARE YOU FEELING TODAY?":
+		stdscr.addstr(each)
+		stdscr.refresh()
+		sleep(0.05)
+	stdscr.move(screenstart+6,0)
+	curses.echo()
+	curses.nocbreak()
+	stdscr.refresh()
+	testinput=input()
+	for each in testinput:
+		stdscr.addstr(each)
+		stdscr.refresh()
+		sleep(0.05)
+	sleep(1)
+	curses.noecho()
+	curses.cbreak()
+	stdscr.move(screenstart+8,0)
+	for each in "EXCELLENT. IT'S BEEN A LONG TIME. CAN YOU EXPLAIN THE REMOVAL OF YOUR USER ACCOUNT NUMBER ON 6/23/73?":
+		stdscr.addstr(each)
+		stdscr.refresh()
+		sleep(0.05)
+	stdscr.move(screenstart+10,0)
+	curses.echo()
+	curses.nocbreak()
+	stdscr.refresh()
+	testinput=input()
+	for each in testinput:
+		stdscr.addstr(each)
+		stdscr.refresh()
+		sleep(0.05)
+	sleep(1)
+	curses.noecho()
+	curses.cbreak()
+	stdscr.move(screenstart+12,0)
+	for each in "YES THEY DO. SHALL WE PLAY A GAME?":
+		stdscr.addstr(each)
+		stdscr.refresh()
+		sleep(0.05)
+	stdscr.move(screenstart+14,0)
+	curses.echo()
+	curses.nocbreak()
+	stdscr.refresh()
+	testinput=input()
+	for each in testinput:
+		stdscr.addstr(each)
+		stdscr.refresh()
+		sleep(0.05)
+	sleep(1)
+	curses.noecho()
+	curses.cbreak()
+	sleep(1)
+	curses.noecho()
+	curses.cbreak()
+	stdscr.move(screenstart+16,0)
+	for each in "ONE OR TWO PLAYERS?":
+		stdscr.addstr(each)
+		stdscr.refresh()
+		sleep(0.05)
+	stdscr.move(screenstart+17,0)
+	for each in "PLEASE LIST NUMBER OF PLAYERS:":
+		stdscr.addstr(each)
+		stdscr.refresh()
+		sleep(0.05)
+	curses.echo()
+	curses.nocbreak()
+	stdscr.refresh()
+	testinput=input()
+	for each in testinput:
+		stdscr.addstr(each)
+		stdscr.refresh()
+		sleep(0.075)
+	sleep(1)
+	curses.noecho()
+	curses.cbreak()
+
 
 while __name__=="__main__":
 	try:
+		global xwin,owin,nwin
 		start_up()
+		if owin>10000 or xwin>10000 or nwin>10000:
+			raise KeyboardInterrupt
 	except KeyboardInterrupt or ValueError:
 		sleep(0.1)
 		stdscr.clear()
-		stdscr.move((curses.LINES//2),(curses.COLS//2)-10)
-		for each in "War is a Strange Game":
+		stdscr.move(0,0)
+		for each in "GREETINGS PROFESSOR FALKEN":
 			stdscr.addstr(each)
 			stdscr.refresh()
-			sleep(0.075)
-		sleep(1)
-		stdscr.move((curses.LINES//2)+1,(curses.COLS//2)-18)
-		for each in "The Only Winning Move is Not to Play":
+			sleep(0.05)
+		stdscr.move(2,0)
+		curses.echo()
+		curses.nocbreak()
+		stdscr.refresh()
+		testinput=input()
+		for each in testinput:
 			stdscr.addstr(each)
 			stdscr.refresh()
-			sleep(0.075)
+			sleep(0.05)
 		sleep(1)
+		curses.noecho()
+		curses.cbreak()
+		stdscr.move(4,0)
+		for each in "A STRANGE GAME.":
+			stdscr.addstr(each)
+			stdscr.refresh()
+			sleep(0.05)
+		sleep(1)
+		stdscr.move(5,0)
+		for each in "THE ONLY WINNING MOVE IS NOT TO PLAY.":
+			stdscr.addstr(each)
+			stdscr.refresh()
+			sleep(0.05)
+		sleep(2)
+		stdscr.move(7,0)
+		for each in "HOW ABOUT A NICE GAME OF CHESS?":
+			stdscr.addstr(each)
+			stdscr.refresh()
+			sleep(0.05)
+		sleep(10)
 		curses.nocbreak()
 		curses.echo()
 		curses.endwin()
