@@ -1,24 +1,26 @@
 Concepts for Game:
 You are a clanlord of a small clan, maintaining a holding similar to King of Dragon Pass
+Your end goal is to join every demesne together and become the king
 
 Three seasons: Growth Harvest Dark
-
 	Growth season:
-		Plant most crops, new year celebration, and animal births
-		
+		Animal Births, Pop growth
 	Harvest season:
-		Harvest most crops, animal youth mature, plant some crops
-		
+		Animal youth mature
 	Dark season:
-		Reduced food decay, but no plantable and few harvestable crops
+		Reduced Food decay
 	
 Food
-	~20% of your food decays each month, before the harvest
+	~20% of your Food spoils each month, before the harvest
 		~15% during Dark season
-	Each "person" eats 1 food unit each month, regardless of whether they work or not
-	Any additional food needed is taken from your animals
-	Most animals produce a small amount of food each month
-	There are five kinds of food: Meat Milk Grain Fruit Vegetable
+	Each Pop eats 1 Food each month, regardless of whether they work or not
+	Any additional Food needed is taken from your animals
+		Prioritizes to kill the fewest animals
+		Sheep are preferred over Goats
+		Chickens are preferred over Ducks
+	Any Pop that cannot eat starves to death
+	Most animals produce a small amount of Food each month
+	There are five kinds of food: Meat Dairy Grain Fruit Vegetable
 		Meat is produced when an animal is butchered, and periodically from Chickens and Ducks
 			Chickens produce 1 Meat every month per 5 Chickens
 			Chickens are butchered for 3 Meat
@@ -27,40 +29,112 @@ Food
 			Sheep are butchered for 10 Meat
 			Goats are butchered for 10 Meat
 			Cattle are butchered for 15 Meat
-		Milk is produced periodically from Sheep, Goats, and Cattle during Growth
-			Sheep produce 1 Milk every Growth month
-			Goats produce 1 Milk every Growth month
-			Cattle produce 1 Milk every Growth month
+		Dairy is produced periodically from Sheep, Goats, and Cattle during Growth
+			Every four Sheep produces 1 Dairy every Growth month
+			Every four Goat produces 1 Dairy every Growth month
+			Every four Cattle produces 1 Dairy every Growth month
 		Grain, Fruit and Vegetables are harvested as crops
-			Grain is primarily planted in Growth and harvested in Harvest
-				Barley is planted mid-Growth and harvested early Harvest
-				Oats are planted late Growth and harvested early Harvest
-				Rice is planted late Growth and harvested mid-Harvest
-				Rye is planted late Harvest and harvested late Growth
-				Sorghum is planted late Growth and harvested late Harvest
-				Spring Wheat is planted mid-Growth and harvested early Harvest
-				Winter Wheat is planted late Harvest and harvested late Growth
-			Fruit is planted in any season and is primarily harvested in Growth
-			Vegetables are planted and harvested in most any season
-				Artichoke is planted 3 Growth and harvested 2-3 Harvest
-				Lettuce is planted 2-4 Growth and 1-2 Harvest and harvested 3-4 Growth and 1-4 Harvest
-				Beets are planted 4 Dark 1 Growth and harvested 2-4 Growth
-				Broccoli is planted 1 Growth and 1-2 Harvest and harvested 3-4 Growth and 4 Harvest
-				Cauliflower is planted 1-3 Growth 1-2 Harvest and harvested 2-4 Harvest 1 Dark
-				Cabbage is planted 3-4 Growth and harvested 3-4 Harvest
-				Kale is planted 1 Harvest and harvested 3-4 Harvest 1-2 Dark
-				Brussel Sprouts are planted 3-4 Growth and harvested 3-4 Harvest
-				Carrots are planted 3-4 Growth 1 Harvest and harvested 2-4 Harvest and 1-2 Dark
-				Cucumbers are planted 3-4 Growth and harvested 2-3 Harvest
-				Eggplants
-				Leeks are planted 1 Growth and harvested 1-3 Harvest
-				Okra
-				Onions are planted 1-2 Growth and harvested 1-2 Harvest
-				Scallions are planted 2-4 Growth 1 Harvest and harvested 4 Growth 1-3 Harvest
-				Shallots are planted 1-2 Growth and harvested 1-2 Harvest
-				Parsnips are planted 2 Growth and harvested 4 Harvest 1-2 Dark
-				Peas are planted 1 Growth and 2 Harvest and harvested 3 Growth and 4 Harvest
-				Radishes are planted 2-4 Growth 1-3 Harvest and harvested 3-4 Growth 1-4 Harvest
-				Spinach is planted 3-4 Dark 1-4 Growth and 1-2 Harvest and harvested 2-4 Growth 1-4 Harvest and 1 Dark
-				Turnips are planted 1-3 Growth and harvested 1-4 Harvest
-				
+			See kodp.ods for planting, growing, and harvesting times
+	Each year in a row you plant the same crop, the yield decreases.
+	Animals:
+		Animals produce offspring in Growth
+			Every four Sheep, Goats, or Cattle produce one offspring every year
+			Every ten Chickens or Ducks produce one offspring every year
+		Baby Animals are fully grown in Harvest
+		Baby Animals do not produce Dairy or Meat
+		Baby Animals butcher for half Meat (rounded down)
+		Animals die of old age, and are automatically butchered
+			Chickens die after 5 years
+			Ducks die after 10 years
+			Sheep die after 10 years
+			Goats die after 15 years
+			Cattle die after 20 years
+
+Techniques
+	Expeditions can acquire special techniques, and some are developed randomly over time
+	Techniques listed in kodp.ods
+
+Expeditions
+	You can send out expeditions
+	Expeditions have one of several goals: Conquest Exploration Diplomacy
+		Conquest Expeditions are solving problems and conquering neighbors through force
+		Exploration Expeditions are exploring the area and discovering new things
+		Diplomacy Expeditions are attempts to appease, trade with, or integrate a neighbor via diplomacy
+	You send out a Noble(s), a company, and supplies
+	Each month, something happens on the expedition (Events)
+		See kodp.ods for full list
+	Events are multiple choice options with different success chances and skill checks
+	The skills of your Noble(s) determine the success of each Event
+	Different goals have different Events
+	
+Nobles
+	You have a board of special people called Nobles
+	Skills
+	Everything that happens is tied to the skills of your Nobles
+		Every time they use the skill, it has a chance to increase by 1
+			lvluplist=[2,3,5,7]
+			lvlupcheck=randint(0,3)
+			if noblename.skillname%lvluplist[lvlupcheck]==randint(1,lvluplist[lvlupcheck]):
+				noblename.skillname=noblename.skillname+1
+		See kodp.ods for list of skills
+	Advisors
+		Advisors are Nobles that manage your clanhold
+		Each Advisor affects a particular piece of your clanhold based on their skills
+		Agriculture AGR Advisor - Head Farmer
+			Increases food production
+			Decreases food decay
+			Directs crop planting
+		Military MIL Advisor - General
+			Increases military might
+			Trains soldiers
+			Leads soldiers into battle
+		Health HLT Advisor - Head Practitioner
+			Cures illnesses
+			Heals injuries
+			Provides healthcare
+		Trade TRD Advisor - Head Merchant
+			Oversees craftmaking
+			Imports necessities
+			Acquires wealth
+		Judiciary JDG Advisor - Chief Judge
+			Enforces the law
+			Maintains order
+			Judges
+		Foreign Relations DIP Advisor - Diplomat
+			Establishes treaties
+			Performs diplomacy
+			Provides counter-espionage
+		Espionage SPY Advisor - Spymaster
+			Steals Techniques and wealth
+			Gathers information
+			Acquire de jure claims
+		
+Military
+	In order to declare war, you must have a de jure claim
+	There are two military values: Defense Offense
+		They are both identical to your clans Might, plus specific bonuses from MIL Adv. and Techniques
+	You send your forces over to wherever you are attacking, and the results depend on the value of your Offense compared to the Defense of whomever you are invading
+	Defense operates identically, though more Techniques increase Defense than Offense
+	The attack is a Conquest expedition where you send a Noble(s), food, and a portion of your Might
+	!!DANGER!! Might that is on an expedition is not used for Defense !!DANGER!!
+	
+Population
+	Your Pop grows by 1% each Growth month
+	Every month, each Pop eats one Food
+	Disease kills % Pops based on severity
+	Diseases
+		Low Severity kills 1% Pop
+		Medium Severity kills 3% Pop
+		High Severity kills 5% Pop
+		Full list in kodp.ods
+	Conquering and Incorporating demesnes grants you Pops, with Incorporating giving more
+	Two Pop categories: Workers Military
+	Workers and Militia can be exchanged for free
+	Workers produce 0.01% more for each Worker
+	Each year, your Military are promoted, granting 1 more Might
+		Militia - 1 Might
+		Soldier - 2 Might
+		Veteran - 3 Might
+		Elite - 4 Might
+	Lower position Military are preferred for exchanging
+	
