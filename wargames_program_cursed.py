@@ -64,8 +64,7 @@ def printboard(board):
 				stdscr.addstr(((curses.LINES//2)-6)+(row*6),((curses.COLS//2)-8)+(col*6),"     ")
 				stdscr.addstr(((curses.LINES//2)-5)+(row*6),((curses.COLS//2)-8)+(col*6),"     ")
 	stdscr.refresh()
-	if (sleepcounter/4)>0:
-		sleep(sleepcounter/4)
+	sleep(sleepcounter/4)
 def winchecker(board,player):
 	global winner
 	losegame=[]
@@ -147,14 +146,12 @@ def start_up():
 		stdscr.refresh()
 	else:
 		stdscr.addstr((curses.LINES//2)-2,(curses.COLS//2)-7,"/-------------\\")
-		stdscr.addstr((curses.LINES//2)-1,(curses.COLS//2)-7,"| WINNER:{0} |".format(winner))
+		stdscr.addstr((curses.LINES//2)-1,(curses.COLS//2)-7,"| WINNER: {0}|".format(winner))
 		stdscr.addstr((curses.LINES//2),(curses.COLS//2)-7,"\\-------------/")
 		nwin=nwin+1
 		stdscr.refresh()
-	sleep(0.009)
-	if sleepcounter>0:
-		sleep(sleepcounter*2)
-		sleepcounter=sleepcounter*0.9
+	sleep(sleepcounter*2)
+	sleepcounter=sleepcounter*0.95
 	return
 if __name__=="__main__":
 	sys.stdout= Unbuffered(sys.stdout)
@@ -268,7 +265,7 @@ while __name__=="__main__":
 	try:
 		global xwin,owin,nwin
 		start_up()
-		if owin>10000 or xwin>10000 or nwin>10000:
+		if owin>randint(15000,50000) or xwin>randint(7500,20000) or nwin>randint(7500,20000):
 			raise KeyboardInterrupt
 	except KeyboardInterrupt or ValueError:
 		sleep(0.1)
