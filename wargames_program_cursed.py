@@ -151,7 +151,7 @@ def start_up():
 		nwin=nwin+1
 		stdscr.refresh()
 	sleep(sleepcounter*2)
-	sleepcounter=sleepcounter*0.999
+	sleepcounter=sleepcounter*0.99
 	return
 if __name__=="__main__":
 	sys.stdout= Unbuffered(sys.stdout)
