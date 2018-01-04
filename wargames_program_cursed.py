@@ -151,7 +151,7 @@ def start_up():
 		nwin=nwin+1
 		stdscr.refresh()
 	sleep(sleepcounter*2)
-	sleepcounter=sleepcounter*0.99
+	sleepcounter=sleepcounter*0.999
 	return
 if __name__=="__main__":
 	sys.stdout= Unbuffered(sys.stdout)
@@ -265,7 +265,7 @@ while __name__=="__main__":
 	try:
 		global xwin,owin,nwin
 		start_up()
-		if owin>randint(20000,50000) or xwin>randint(10000,40000) or nwin>randint(5000,20000):
+		if owin>randint(10000,50000) or xwin>randint(7500,40000) or nwin>randint(4000,20000):
 			raise KeyboardInterrupt
 	except KeyboardInterrupt or ValueError:
 		sleep(0.1)
