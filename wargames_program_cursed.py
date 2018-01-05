@@ -354,6 +354,8 @@ while __name__=="__main__":
 			stdscr.refresh()
 			sleep(0.05)
 		sleep(60)
+		stdscr.clear()
+		stdscr.refresh()
 		curses.nocbreak()
 		curses.echo()
 		curses.endwin()
