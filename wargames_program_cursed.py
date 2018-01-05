@@ -3,8 +3,11 @@ from time import sleep
 import curses
 import sys
 
+#
 #War Operation Plan Response
+#
 
+#Disable Output Buffering
 class Unbuffered(object):
    def __init__(self, stream):
        self.stream = stream
@@ -17,6 +20,7 @@ class Unbuffered(object):
    def __getattr__(self, attr):
        return getattr(self.stream, attr)
 
+#Print tic-tac-toe board & score
 def printboard(board):
 	global stdscr
 	global owin,xwin,nwin
@@ -65,6 +69,7 @@ def printboard(board):
 				stdscr.addstr(((curses.LINES//2)-5)+(row*6),((curses.COLS//2)-8)+(col*6),"     ")
 	stdscr.refresh()
 	sleep(sleepcounter/4)
+#Check to see if either player won
 def winchecker(board,player):
 	global winner
 	losegame=[]
@@ -103,6 +108,7 @@ def winchecker(board,player):
 			losegame.append('lose')
 	if len(losegame)==len(board) and winner=='':
 		return('NONE')
+#Print the gameboard for each player and place a token.
 def playgame(board,playersym):
 	while True:
 		for player in playersym:
@@ -117,6 +123,7 @@ def playgame(board,playersym):
 			board[row-1][col-1]='|{0}|'.format(player)
 			if winchecker(board,player)!=None:
 				return(winchecker(board,player))
+#Game set-up and winner announcement
 def start_up():
 	global owin,xwin,nwin
 	global board
@@ -153,6 +160,7 @@ def start_up():
 	sleep(sleepcounter*2)
 	sleepcounter=sleepcounter*0.99
 	return
+#Initial dialogue and set-up
 if __name__=="__main__":
 	sys.stdout= Unbuffered(sys.stdout)
 	global stdscr
@@ -257,19 +265,60 @@ if __name__=="__main__":
 		stdscr.refresh()
 		sleep(0.075)
 	sleep(1)
+	curses.curs_set(0)
 	curses.noecho()
 	curses.cbreak()
-
-
+	stdscr.clear()
+	stdscr.addstr((curses.LINES//2)-4,(curses.COLS//2)-3,"+     +")
+	stdscr.addstr((curses.LINES//2)+2,(curses.COLS//2)-3,"+     +")
+	stdscr.refresh()
+	sleep(0.1)
+	stdscr.addstr((curses.LINES//2)-5,(curses.COLS//2)-3,"|     |")
+	stdscr.addstr((curses.LINES//2)-4,(curses.COLS//2)-4,"-+-   -+-")
+	stdscr.addstr((curses.LINES//2)-3,(curses.COLS//2)-3,"|     |")
+	stdscr.addstr((curses.LINES//2)+1,(curses.COLS//2)-3,"|     |")
+	stdscr.addstr((curses.LINES//2)+2,(curses.COLS//2)-4,"-+-   -+-")
+	stdscr.addstr((curses.LINES//2)+3,(curses.COLS//2)-3,"|     |")
+	stdscr.refresh()
+	sleep(0.1)
+	stdscr.addstr((curses.LINES//2)-6,(curses.COLS//2)-3,"|     |")
+	stdscr.addstr((curses.LINES//2)-4,(curses.COLS//2)-5,"--+-- --+--")
+	stdscr.addstr((curses.LINES//2)-2,(curses.COLS//2)-3,"|     |")
+	stdscr.addstr((curses.LINES//2),(curses.COLS//2)-3,"|     |")
+	stdscr.addstr((curses.LINES//2)+2,(curses.COLS//2)-5,"--+-- --+--")
+	stdscr.addstr((curses.LINES//2)+4,(curses.COLS//2)-3,"|     |")
+	stdscr.refresh()
+	sleep(0.1)
+	stdscr.addstr((curses.LINES//2)-7,(curses.COLS//2)-3,"|     |")
+	stdscr.addstr((curses.LINES//2)-4,(curses.COLS//2)-6,"---+-----+---")
+	stdscr.addstr((curses.LINES//2)-1,(curses.COLS//2)-3,"|     |")
+	stdscr.addstr((curses.LINES//2)+2,(curses.COLS//2)-6,"---+-----+---")
+	stdscr.addstr((curses.LINES//2)+5,(curses.COLS//2)-3,"|     |")
+	stdscr.refresh()
+	sleep(0.1)
+	stdscr.addstr((curses.LINES//2)-8,(curses.COLS//2)-3,"|     |")
+	stdscr.addstr((curses.LINES//2)-4,(curses.COLS//2)-7,"----+-----+----")
+	stdscr.addstr((curses.LINES//2)+2,(curses.COLS//2)-7,"----+-----+----")
+	stdscr.addstr((curses.LINES//2)+6,(curses.COLS//2)-3,"|     |")
+	stdscr.refresh()
+	sleep(0.1)
+	stdscr.addstr((curses.LINES//2)-9,(curses.COLS//2)-3,"|     |")
+	stdscr.addstr((curses.LINES//2)-4,(curses.COLS//2)-8,"-----+-----+-----")
+	stdscr.addstr((curses.LINES//2)+2,(curses.COLS//2)-8,"-----+-----+-----")
+	stdscr.addstr((curses.LINES//2)+7,(curses.COLS//2)-3,"|     |")
+	stdscr.refresh()
+#Repeat game until arbitrary limit reached, then closing dialogue
 while __name__=="__main__":
 	try:
 		global xwin,owin,nwin
 		start_up()
-		if owin>randint(10000,50000) or xwin>randint(7500,40000) or nwin>randint(4000,20000):
+		if owin>randint(5389,200000) or xwin>randint(4824,200000) or nwin>randint(2486,200000):
 			raise KeyboardInterrupt
 	except KeyboardInterrupt or ValueError:
 		sleep(0.1)
 		stdscr.clear()
+		sleep(5)
+		curses.curs_set(1)
 		stdscr.move(0,0)
 		for each in "GREETINGS PROFESSOR FALKEN":
 			stdscr.addstr(each)
@@ -304,7 +353,7 @@ while __name__=="__main__":
 			stdscr.addstr(each)
 			stdscr.refresh()
 			sleep(0.05)
-		sleep(10)
+		sleep(60)
 		curses.nocbreak()
 		curses.echo()
 		curses.endwin()
