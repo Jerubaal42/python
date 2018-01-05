@@ -312,7 +312,7 @@ while __name__=="__main__":
 	try:
 		global xwin,owin,nwin
 		start_up()
-		if owin>randint(randint(randint(4500,5500),randint(9000,15000)),500000) or xwin>randint(randint(randint(3500,4500),randint(9000,15000)),500000) or nwin>randint(randint(randint(1500,2500),randint(9000,15000)),500000):
+		if nwin>randint(randint(randint(1500,2500),randint(9000,15000)),500000):
 			raise KeyboardInterrupt
 	except KeyboardInterrupt or ValueError:
 		sleep(0.1)
