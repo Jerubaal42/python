@@ -491,7 +491,7 @@ while __name__=="__main__":
 	except KeyboardInterrupt or ValueError:
 		sleep(0.1)
 		stdscr.clear()
-		sleep(5)
+		sleep(15)
 		curses.curs_set(1)
 		stdscr.move(0,0)
 		for each in "GREETINGS PROFESSOR FALKEN":
