@@ -310,14 +310,13 @@ if __name__=="__main__":
 	owin=0
 	xwin=0
 	nwin=0
-	screenstart=0
 	stdscr.clear()
-	stdscr.move(screenstart,0)
-	for each in "GREETINGS PROFESSOR FALKEN.":
+	stdscr.scrollok(True)
+	stdscr.move(0,0)
+	for each in "GREETINGS PROFESSOR FALKEN.\n\n":
 		stdscr.addstr(each)
 		stdscr.refresh()
 		sleep(0.05)
-	stdscr.move(screenstart+2,0)
 	curses.echo()
 	curses.nocbreak()
 	stdscr.refresh()
@@ -326,15 +325,14 @@ if __name__=="__main__":
 		stdscr.addstr(each)
 		stdscr.refresh()
 		sleep(0.05)
+	stdscr.addstr("\n\n")
 	sleep(1)
 	curses.noecho()
 	curses.cbreak()
-	stdscr.move(screenstart+4,0)
-	for each in "HOW ARE YOU FEELING TODAY?":
+	for each in "HOW ARE YOU FEELING TODAY?\n\n":
 		stdscr.addstr(each)
 		stdscr.refresh()
 		sleep(0.05)
-	stdscr.move(screenstart+6,0)
 	curses.echo()
 	curses.nocbreak()
 	stdscr.refresh()
@@ -343,15 +341,14 @@ if __name__=="__main__":
 		stdscr.addstr(each)
 		stdscr.refresh()
 		sleep(0.05)
+	stdscr.addstr("\n\n")
 	sleep(1)
 	curses.noecho()
 	curses.cbreak()
-	stdscr.move(screenstart+8,0)
-	for each in "EXCELLENT. IT'S BEEN A LONG TIME. CAN YOU EXPLAIN THE REMOVAL OF YOUR USER ACCOUNT NUMBER ON 6/23/73?":
+	for each in "EXCELLENT. IT'S BEEN A LONG TIME. CAN YOU EXPLAIN THE REMOVAL OF YOUR USER ACCOUNT NUMBER ON 6/23/73?\n\n":
 		stdscr.addstr(each)
 		stdscr.refresh()
 		sleep(0.05)
-	stdscr.move(screenstart+10,0)
 	curses.echo()
 	curses.nocbreak()
 	stdscr.refresh()
@@ -360,15 +357,14 @@ if __name__=="__main__":
 		stdscr.addstr(each)
 		stdscr.refresh()
 		sleep(0.05)
+	stdscr.addstr("\n\n")
 	sleep(1)
 	curses.noecho()
 	curses.cbreak()
-	stdscr.move(screenstart+12,0)
-	for each in "YES THEY DO. SHALL WE PLAY A GAME?":
+	for each in "YES THEY DO. SHALL WE PLAY A GAME?\n\n":
 		stdscr.addstr(each)
 		stdscr.refresh()
 		sleep(0.05)
-	stdscr.move(screenstart+14,0)
 	curses.echo()
 	curses.nocbreak()
 	stdscr.refresh()
@@ -377,18 +373,14 @@ if __name__=="__main__":
 		stdscr.addstr(each)
 		stdscr.refresh()
 		sleep(0.05)
+	stdscr.addstr("\n\n")
 	sleep(1)
 	curses.noecho()
 	curses.cbreak()
-	sleep(1)
-	curses.noecho()
-	curses.cbreak()
-	stdscr.move(screenstart+16,0)
-	for each in "ONE OR TWO PLAYERS?":
+	for each in "ONE OR TWO PLAYERS?\n":
 		stdscr.addstr(each)
 		stdscr.refresh()
 		sleep(0.05)
-	stdscr.move(screenstart+17,0)
 	for each in "PLEASE LIST NUMBER OF PLAYERS:":
 		stdscr.addstr(each)
 		stdscr.refresh()
@@ -403,6 +395,7 @@ if __name__=="__main__":
 		sleep(0.075)
 	sleep(1)
 	curses.curs_set(0)
+	stdscr.scrollok(False)
 	curses.noecho()
 	curses.cbreak()
 	stdscr.clear()
@@ -493,12 +486,12 @@ while __name__=="__main__":
 		stdscr.clear()
 		sleep(15)
 		curses.curs_set(1)
+		stdscr.scrollok(True)
 		stdscr.move(0,0)
-		for each in "GREETINGS PROFESSOR FALKEN":
+		for each in "GREETINGS PROFESSOR FALKEN\n\n":
 			stdscr.addstr(each)
 			stdscr.refresh()
 			sleep(0.05)
-		stdscr.move(2,0)
 		curses.echo()
 		curses.nocbreak()
 		stdscr.refresh()
@@ -507,22 +500,20 @@ while __name__=="__main__":
 			stdscr.addstr(each)
 			stdscr.refresh()
 			sleep(0.05)
+		stdscr.addstr("\n\n")
 		sleep(1)
 		curses.noecho()
 		curses.cbreak()
-		stdscr.move(4,0)
-		for each in "A STRANGE GAME.":
+		for each in "A STRANGE GAME.\n":
 			stdscr.addstr(each)
 			stdscr.refresh()
 			sleep(0.05)
 		sleep(1)
-		stdscr.move(5,0)
-		for each in "THE ONLY WINNING MOVE IS NOT TO PLAY.":
+		for each in "THE ONLY WINNING MOVE IS NOT TO PLAY.\n\n":
 			stdscr.addstr(each)
 			stdscr.refresh()
 			sleep(0.05)
 		sleep(2)
-		stdscr.move(7,0)
 		for each in "HOW ABOUT A NICE GAME OF CHESS?":
 			stdscr.addstr(each)
 			stdscr.refresh()
