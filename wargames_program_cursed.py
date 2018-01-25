@@ -294,6 +294,8 @@ def start_up():
 		stdscr.addch((curses.LINES//2),(curses.COLS//2)+7,"╯")
 		nwin=nwin+1
 		stdscr.refresh()
+		if nwin>randint(randint(randint(500,1500),randint(9000,15000)),500000):
+			raise KeyboardInterrupt
 	sleep(sleepcounter*2)
 	sleepcounter=sleepcounter*0.99
 	return
@@ -479,8 +481,6 @@ while __name__=="__main__":
 	try:
 		global xwin,owin,nwin
 		start_up()
-		if nwin>randint(randint(randint(500,1500),randint(9000,15000)),500000):
-			raise KeyboardInterrupt
 	except KeyboardInterrupt or ValueError:
 		sleep(0.1)
 		stdscr.clear()
