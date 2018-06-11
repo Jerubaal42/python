@@ -10,11 +10,11 @@ def shuffle():
             else:
                 deck.append(10)
     for tweak in range(0,10):
-        deck.pop(randint(0,len(deck)))
+        deck.pop(randint(0,len(deck)-1))
 
 def drawcard():
     global deck
-    card=deck.pop(randint(0,len(deck)))
+    card=deck.pop(randint(0,len(deck)-1))
     return card
 
 def round():
@@ -26,7 +26,7 @@ def round():
     playerbet=[]
     for player in range(0,players):
         playercard[player].append(drawcard())
-        playerbet[player]=[]
+        playerbet[player].append([])
     dealercard.append(drawcard())
     print("Dealer: {0}".format(dealercard))
     for player in range(0,players):
