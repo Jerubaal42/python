@@ -7,9 +7,34 @@ def m_create_board():
 	for x in range(0,board_col):
 		board.append(['O']*board_row)
 def m_print_board(board):
+	strlen=""
+	strleninit=len(str(board_col))
+	strlenupd=0
+	for each in range(strleninit):
+		strlen+=" "
+	print(strlen,end=" ")
+	for col in range(board_col):
+		if len(str(col+1))+len(strlen)>strleninit:
+			strlenupd+=1
+			strlen=""
+			for each in range(strleninit-strlenupd):
+				strlen+=" "
+		print(col+1,end=strlen)
+	print(end="\n")
+	strlen=""
+	strleninit=len(str(len(board)))
+	strlenupd=0
+	for each in range(strleninit):
+		strlen+=" "
 	for row in range(len(board)):
+		if len(str(row+1))+len(strlen)>strleninit:
+			strlenupd+=1
+			strlen=""
+			for each in range(strleninit-strlenupd):
+				strlen+=" "
+		print(str(row+1)+(strlen),end="|")
 		for col in board[row]:
-			print(col, end="")
+			print(col,end=" ")
 		print(end="\n")
 def m_mine_repeat():
 	mine_row=m_random_row(board)
